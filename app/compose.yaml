@@ -1,9 +1,30 @@
 services:
   frontend:
-    image: nuxt
+    image: frontend
+    depends_on:
+      db:
+        condition: service_healthy
     ports:
       - "3000:3000"
-  backend:
-    image: elte-felho-backend
+      
+
+  library-api:
+    image: library-api
+    depends_on:
+      db:
+        condition: service_healthy
     ports:
-      - "5000:5000"
+      - "7676:7676"
+
+  db:
+    image: my-pg
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready"]
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: petiyeti
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
