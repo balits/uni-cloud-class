@@ -1,0 +1,5 @@
+app/library-api/debug/
+app/library-api/target/
+app/library-api/Cargo.lock
+app/library-api/**/*.rs.bk
+app/library-api/*.pdb
