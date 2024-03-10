@@ -1,0 +1,9 @@
+services:
+  frontend:
+    image: nuxt
+    ports:
+      - "3000:3000"
+  backend:
+    image: elte-felho-backend
+    ports:
+      - "5000:5000"
